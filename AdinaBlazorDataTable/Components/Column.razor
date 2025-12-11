@@ -1,0 +1,23 @@
+﻿@using System.Threading.Tasks
+@typeparam TItem
+@code {
+    [CascadingParameter]
+    private DataTable<TItem> ParentGrid { get; set; }
+    [Parameter] public DataTableColumn<TItem> DataGridColumn { get; set; }
+    [Parameter]
+    public string Header { get; set; }
+
+    [Parameter]
+    public string Field { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        if (ParentGrid != null)
+        {
+            DataGridColumn = new DataTableColumn<TItem>(Header, Field);
+            if (ParentGrid != null)
+                await ParentGrid.RegisterColumnAsync(DataGridColumn);
+        }
+    }
+    
+
+}

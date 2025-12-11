@@ -1,0 +1,53 @@
+﻿@typeparam TItem
+
+<div class="data-grid">
+    <h3>@Title</h3>
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+    @if (_shouldRenderTable)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    @foreach (var column in _columns)
+                    {
+                        <th>@column.Header</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @if (Data != null)
+                {
+                    @foreach (var item in Data)
+                    {
+                        <tr>
+                            @foreach (var column in _columns)
+                            {
+                                <td>@column.GetValue(item)</td>
+                            }
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; } = "Data Table";
+    [Parameter] public List<TItem> Data { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    private List<DataTableColumn<TItem>> _columns = new();
+    private bool _shouldRenderTable = false;
+    public async Task RegisterColumnAsync(DataTableColumn<TItem> column)
+    {
+        _columns.Add(column);
+        if (!_shouldRenderTable)
+        {
+            _shouldRenderTable = true;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+}

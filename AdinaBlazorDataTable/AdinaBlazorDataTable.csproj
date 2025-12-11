@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<PackageId>AdinaBlazorDataTable.Blazor</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Saeid Kamyab</Authors>
+	<Company>saeidkamiab@gmail.com</Company>
+	<Description>This is a free DataTable (DataGrid) that is lightweight, fast, and styleable.</Description>
+	<PackageTags>blazor;datagrid;table;grid;rtl;components;light;fast;styleable</PackageTags>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+ <PackageProjectUrl>https://github.com/yourusername/PersianDataGrid</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/yourusername/PersianDataGrid.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+	
+	
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0" />
+	</ItemGroup>
+
+</Project>
