@@ -1,0 +1,19 @@
+﻿@using AdinaBlazorDataTable.Core
+@using System.Linq.Expressions
+@typeparam TItem
+@code {
+    [CascadingParameter] internal DataGrid<TItem> Grid { get; set; } = default!;
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public Expression<Func<TItem, object>>? Field { get; set; }
+    [Parameter] public bool Sortable { get; set; }
+    protected override void OnInitialized()
+    {
+        var column = new ColumnDefinition<TItem>
+        {
+            Title = Title,
+            Field = Field,
+            Sortable = Sortable
+        };
+        Grid.RegisterColumn(column);
+    }
+}

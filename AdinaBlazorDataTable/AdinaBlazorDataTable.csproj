@@ -7,7 +7,7 @@
 		<LangVersion>latest</LangVersion>
 
 		<PackageId>AdinaBlazorDataTable.Blazor</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Saeid Kamyab</Authors>
 		<Company>saeidkamiab@gmail.com</Company>
 		<Description>This is a free DataTable (DataGrid) that is lightweight, fast, and styleable.</Description>
@@ -51,6 +51,12 @@
 		<None Include="README.md" Pack="true" PackagePath="\" />
 		<None Include="LICENSE" Pack="true" PackagePath="\" />
 		<None Include="Components\**" Pack="true" PackagePath="contentFiles\any\any\Components\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="Components\DataGrid.razor" />
+	  <Content Remove="Components\DataGridColumn.razor" />
+	  <Content Remove="Components\DataGridColumns.razor" />
 	</ItemGroup>
 
 

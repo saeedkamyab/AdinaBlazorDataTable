@@ -1,0 +1,24 @@
+﻿@using AdinaBlazorDataTable.Core
+@typeparam TItem
+ <CascadingValue Value="this">
+     <table class="yg-grid">
+        @ChildContent
+     </table>
+    </CascadingValue>
+@code {
+    [Parameter] public IEnumerable<TItem>? Items { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    internal GridState<TItem> State { get; } = new();
+    protected override void OnParametersSet()
+    {
+        if (Items != null)
+        {
+            State.SetData(Items);
+        }
+    }
+    internal void RegisterColumn(ColumnDefinition<TItem> column)
+    {
+        column.Compile();
+        State.Columns.Add(column);
+    }
+}
